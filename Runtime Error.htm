@@ -1,0 +1,165 @@
+
+<!-- saved from url=(0043)http://www.labware.com/lwweb.nsf/rHome3.xsp -->
+<html lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Runtime Error</title>
+<style type="text/css">
+body {margin-left: 2em;font-family: 'Verdana', 'Arial', 'Helvetica', 'sans-serif';font-size: 9pt}
+h1 {color: #352BFF; font-size : 1.5em; background: #ddd; line-height:2.0em;}
+h2 {color: #352BFF; font-size : 1.2em;}
+pre { font-family: 'Courier new', 'Courier', 'monospace'; font-size : 10pt; line-height:1.2em;}
+pre { border : 1px solid #ddd; margin-left: 2em; }
+.row { margin-left: 2em; }
+</style>
+</head>
+<body>
+<script>
+function toggleElement(id){
+  var e=document.getElementById(id);
+  var e1=document.getElementById(id+'_collapse');
+  var e2=document.getElementById(id+'_expand');
+  if(!e || !e1 || !e2)return true;
+  if(e.style.display=="none"){
+    e.style.display="block"
+    e1.style.display="inline"
+    e2.style.display="none"
+  } else {
+    e.style.display="none"
+    e1.style.display="none"
+    e2.style.display="inline"
+  }
+  return true;
+}
+</script>
+<h1>Unexpected runtime error</h1>
+The runtime has encountered an unexpected error.<br>
+<h2>Error source</h2>
+<span class="row"><b>Page Name:</b>/rHome3.xsp</span><br><span class="row"><b>Control Id:</b> langSelector</span><br>
+<span class="row"><b>Property:</b> onchange</span><br>
+<br><h2>Exception</h2>
+<span class="row">Error while executing JavaScript action expression</span><br>
+<span class="row">Script interpreter error, line=7, col=26: 'doc' is null</span><br>
+<p style="margin-left : 2em;"><b>JavaScript code</b><br></p><pre>&nbsp;&nbsp;&nbsp;1: var chosenLanguage = getComponent("langSelector").getSubmittedValue();
+&nbsp;&nbsp;&nbsp;2: if (chosenLanguage == "Select Language"){
+&nbsp;&nbsp;&nbsp;3: 	// do nothing -- at some point will have to have a translation of this too.
+&nbsp;&nbsp;&nbsp;4: }else
+&nbsp;&nbsp;&nbsp;5: {
+&nbsp;&nbsp;&nbsp;6: 	var doc:NotesDocument = session.getCurrentDatabase().getView("LanguageWebSites").getDocumentByKey(chosenLanguage);
+&nbsp;&nbsp;&nbsp;7: <font color="red">	var langDB = doc.getItemValueString("webDatabase");</font>
+&nbsp;&nbsp;&nbsp;8: 	facesContext.getExternalContext().redirect("http://www.labware.com/"+langDB);
+&nbsp;&nbsp;&nbsp;9: }
+</pre><p></p>
+<p style="margin-left: 2em;">
+<a id="stacktrace_expand" onclick="toggleElement(&#39;stacktrace&#39;)" style="cursor: pointer; display: none;">&#9658;</a>
+<a id="stacktrace_collapse" onclick="toggleElement(&#39;stacktrace&#39;)" style="display: inline; cursor: pointer;">&#9660; </a>
+<b>Stack Trace</b><br>
+</p><pre id="stacktrace" style="display: block;">javax.faces.FacesException: Error while executing JavaScript action expression
+    com.sun.faces.lifecycle.ApplyRequestValuesPhase.execute(ApplyRequestValuesPhase.java:106)
+    com.sun.faces.lifecycle.LifecycleImpl.phase(LifecycleImpl.java:210)
+    com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:96)
+    com.ibm.xsp.controller.FacesControllerImpl.execute(FacesControllerImpl.java:250)
+    com.ibm.xsp.webapp.FacesServlet.serviceView(FacesServlet.java:223)
+    com.ibm.xsp.webapp.FacesServletEx.serviceView(FacesServletEx.java:204)
+    com.ibm.xsp.webapp.FacesServlet.service(FacesServlet.java:160)
+    com.ibm.xsp.webapp.FacesServletEx.service(FacesServletEx.java:138)
+    com.ibm.xsp.webapp.DesignerFacesServlet.service(DesignerFacesServlet.java:103)
+    com.ibm.designer.runtime.domino.adapter.ComponentModule.invokeServlet(ComponentModule.java:583)
+    com.ibm.domino.xsp.module.nsf.NSFComponentModule.invokeServlet(NSFComponentModule.java:1281)
+    com.ibm.designer.runtime.domino.adapter.ComponentModule$AdapterInvoker.invokeServlet(ComponentModule.java:860)
+    com.ibm.designer.runtime.domino.adapter.ComponentModule$ServletInvoker.doService(ComponentModule.java:803)
+    com.ibm.designer.runtime.domino.adapter.ComponentModule.doService(ComponentModule.java:572)
+    com.ibm.domino.xsp.module.nsf.NSFComponentModule.doService(NSFComponentModule.java:1265)
+    com.ibm.domino.xsp.module.nsf.NSFService.doServiceInternal(NSFService.java:658)
+    com.ibm.domino.xsp.module.nsf.NSFService.doService(NSFService.java:481)
+    com.ibm.designer.runtime.domino.adapter.LCDEnvironment.doService(LCDEnvironment.java:341)
+    com.ibm.designer.runtime.domino.adapter.LCDEnvironment.service(LCDEnvironment.java:297)
+    com.ibm.domino.xsp.bridge.http.engine.XspCmdManager.service(XspCmdManager.java:272)
+com.ibm.xsp.exception.EvaluationExceptionEx: Error while executing JavaScript action expression
+    com.ibm.xsp.binding.javascript.JavaScriptMethodBinding.invoke(JavaScriptMethodBinding.java:126)
+    com.ibm.xsp.application.ActionListenerImpl.processAction(ActionListenerImpl.java:60)
+    javax.faces.component.UICommand.broadcast(UICommand.java:324)
+    com.ibm.xsp.component.UIEventHandler.broadcast(UIEventHandler.java:366)
+    com.ibm.xsp.component.UIDataPanelBase.broadcast(UIDataPanelBase.java:400)
+    com.ibm.xsp.component.UIDataPanelBase.broadcast(UIDataPanelBase.java:400)
+    com.ibm.xsp.component.UIDataPanelBase.broadcast(UIDataPanelBase.java:400)
+    com.ibm.xsp.component.UIDataPanelBase.broadcast(UIDataPanelBase.java:400)
+    com.ibm.xsp.component.UIDataPanelBase.broadcast(UIDataPanelBase.java:400)
+    com.ibm.xsp.component.UIViewRootEx.broadcast(UIViewRootEx.java:1535)
+    javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:307)
+    javax.faces.component.UIViewRoot.processDecodes(UIViewRoot.java:344)
+    com.ibm.xsp.component.UIViewRootEx._processDecodes(UIViewRootEx.java:1438)
+    com.ibm.xsp.component.UIViewRootEx.processDecodes(UIViewRootEx.java:1399)
+    com.sun.faces.lifecycle.ApplyRequestValuesPhase.execute(ApplyRequestValuesPhase.java:98)
+    com.sun.faces.lifecycle.LifecycleImpl.phase(LifecycleImpl.java:210)
+    com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:96)
+    com.ibm.xsp.controller.FacesControllerImpl.execute(FacesControllerImpl.java:250)
+    com.ibm.xsp.webapp.FacesServlet.serviceView(FacesServlet.java:223)
+    com.ibm.xsp.webapp.FacesServletEx.serviceView(FacesServletEx.java:204)
+    com.ibm.xsp.webapp.FacesServlet.service(FacesServlet.java:160)
+    com.ibm.xsp.webapp.FacesServletEx.service(FacesServletEx.java:138)
+    com.ibm.xsp.webapp.DesignerFacesServlet.service(DesignerFacesServlet.java:103)
+    com.ibm.designer.runtime.domino.adapter.ComponentModule.invokeServlet(ComponentModule.java:583)
+    com.ibm.domino.xsp.module.nsf.NSFComponentModule.invokeServlet(NSFComponentModule.java:1281)
+    com.ibm.designer.runtime.domino.adapter.ComponentModule$AdapterInvoker.invokeServlet(ComponentModule.java:860)
+    com.ibm.designer.runtime.domino.adapter.ComponentModule$ServletInvoker.doService(ComponentModule.java:803)
+    com.ibm.designer.runtime.domino.adapter.ComponentModule.doService(ComponentModule.java:572)
+    com.ibm.domino.xsp.module.nsf.NSFComponentModule.doService(NSFComponentModule.java:1265)
+    com.ibm.domino.xsp.module.nsf.NSFService.doServiceInternal(NSFService.java:658)
+    com.ibm.domino.xsp.module.nsf.NSFService.doService(NSFService.java:481)
+    com.ibm.designer.runtime.domino.adapter.LCDEnvironment.doService(LCDEnvironment.java:341)
+    com.ibm.designer.runtime.domino.adapter.LCDEnvironment.service(LCDEnvironment.java:297)
+    com.ibm.domino.xsp.bridge.http.engine.XspCmdManager.service(XspCmdManager.java:272)
+com.ibm.jscript.InterpretException: Script interpreter error, line=7, col=26: 'doc' is null
+    com.ibm.jscript.ASTTree.ASTMember.interpret(ASTMember.java:153)
+    com.ibm.jscript.ASTTree.ASTCall.interpret(ASTCall.java:88)
+    com.ibm.jscript.ASTTree.ASTVariableDecl.interpret(ASTVariableDecl.java:82)
+    com.ibm.jscript.ASTTree.ASTBlock.interpret(ASTBlock.java:100)
+    com.ibm.jscript.ASTTree.ASTIf.interpret(ASTIf.java:90)
+    com.ibm.jscript.ASTTree.ASTProgram.interpret(ASTProgram.java:119)
+    com.ibm.jscript.ASTTree.ASTProgram.interpretEx(ASTProgram.java:139)
+    com.ibm.jscript.JSExpression._interpretExpression(JSExpression.java:435)
+    com.ibm.jscript.JSExpression.access$1(JSExpression.java:424)
+    com.ibm.jscript.JSExpression$2.run(JSExpression.java:414)
+    java.security.AccessController.doPrivileged(AccessController.java:310)
+    com.ibm.jscript.JSExpression.interpretExpression(JSExpression.java:410)
+    com.ibm.jscript.JSExpression.evaluateValue(JSExpression.java:251)
+    com.ibm.jscript.JSExpression.evaluateValue(JSExpression.java:234)
+    com.ibm.xsp.javascript.JavaScriptInterpreter.interpret(JavaScriptInterpreter.java:221)
+    com.ibm.xsp.binding.javascript.JavaScriptMethodBinding.invoke(JavaScriptMethodBinding.java:111)
+    com.ibm.xsp.application.ActionListenerImpl.processAction(ActionListenerImpl.java:60)
+    javax.faces.component.UICommand.broadcast(UICommand.java:324)
+    com.ibm.xsp.component.UIEventHandler.broadcast(UIEventHandler.java:366)
+    com.ibm.xsp.component.UIDataPanelBase.broadcast(UIDataPanelBase.java:400)
+    com.ibm.xsp.component.UIDataPanelBase.broadcast(UIDataPanelBase.java:400)
+    com.ibm.xsp.component.UIDataPanelBase.broadcast(UIDataPanelBase.java:400)
+    com.ibm.xsp.component.UIDataPanelBase.broadcast(UIDataPanelBase.java:400)
+    com.ibm.xsp.component.UIDataPanelBase.broadcast(UIDataPanelBase.java:400)
+    com.ibm.xsp.component.UIViewRootEx.broadcast(UIViewRootEx.java:1535)
+    javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:307)
+    javax.faces.component.UIViewRoot.processDecodes(UIViewRoot.java:344)
+    com.ibm.xsp.component.UIViewRootEx._processDecodes(UIViewRootEx.java:1438)
+    com.ibm.xsp.component.UIViewRootEx.processDecodes(UIViewRootEx.java:1399)
+    com.sun.faces.lifecycle.ApplyRequestValuesPhase.execute(ApplyRequestValuesPhase.java:98)
+    com.sun.faces.lifecycle.LifecycleImpl.phase(LifecycleImpl.java:210)
+    com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:96)
+    com.ibm.xsp.controller.FacesControllerImpl.execute(FacesControllerImpl.java:250)
+    com.ibm.xsp.webapp.FacesServlet.serviceView(FacesServlet.java:223)
+    com.ibm.xsp.webapp.FacesServletEx.serviceView(FacesServletEx.java:204)
+    com.ibm.xsp.webapp.FacesServlet.service(FacesServlet.java:160)
+    com.ibm.xsp.webapp.FacesServletEx.service(FacesServletEx.java:138)
+    com.ibm.xsp.webapp.DesignerFacesServlet.service(DesignerFacesServlet.java:103)
+    com.ibm.designer.runtime.domino.adapter.ComponentModule.invokeServlet(ComponentModule.java:583)
+    com.ibm.domino.xsp.module.nsf.NSFComponentModule.invokeServlet(NSFComponentModule.java:1281)
+    com.ibm.designer.runtime.domino.adapter.ComponentModule$AdapterInvoker.invokeServlet(ComponentModule.java:860)
+    com.ibm.designer.runtime.domino.adapter.ComponentModule$ServletInvoker.doService(ComponentModule.java:803)
+    com.ibm.designer.runtime.domino.adapter.ComponentModule.doService(ComponentModule.java:572)
+    com.ibm.domino.xsp.module.nsf.NSFComponentModule.doService(NSFComponentModule.java:1265)
+    com.ibm.domino.xsp.module.nsf.NSFService.doServiceInternal(NSFService.java:658)
+    com.ibm.domino.xsp.module.nsf.NSFService.doService(NSFService.java:481)
+    com.ibm.designer.runtime.domino.adapter.LCDEnvironment.doService(LCDEnvironment.java:341)
+    com.ibm.designer.runtime.domino.adapter.LCDEnvironment.service(LCDEnvironment.java:297)
+    com.ibm.domino.xsp.bridge.http.engine.XspCmdManager.service(XspCmdManager.java:272)
+</pre>
+<p></p>
+
+
+</body></html>
